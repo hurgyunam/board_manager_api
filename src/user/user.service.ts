@@ -4,7 +4,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from './user.entity';
 import * as bcrypt from 'bcrypt';
-import { decrypt, encrypt } from 'src/common/utils/encryption.util';
+import { decrypt, encrypt } from '@app/common/utils/encryption.util';
 import { CreateUserDto } from './dto/create-user.dto';
 
 // 보안을 위해 비밀번호 해싱에 사용할 솔트 라운드 수
