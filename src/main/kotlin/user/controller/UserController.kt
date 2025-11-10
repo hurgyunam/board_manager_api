@@ -1,6 +1,8 @@
 package com.overtheinfinite.user.controller
 
+import com.overtheinfinite.common.BasicRes
 import com.overtheinfinite.security.JwtTokenProvider
+import com.overtheinfinite.user.dto.LoginRequest
 import com.overtheinfinite.user.dto.TokenUserResponse
 import com.overtheinfinite.user.dto.UserCreateRequest
 import com.overtheinfinite.user.service.UserService
@@ -15,26 +17,28 @@ class UserController(
     private val jwtTokenProvider: JwtTokenProvider
 ) {
     @GetMapping("/me")
-    fun getMyInfo(@RequestHeader("Authorization") authorizationHeader: String): ResponseEntity<TokenUserResponse> {
-        // 1. Bearer 접두사 제거
-        if (!authorizationHeader.startsWith("Bearer ")) {
-            return ResponseEntity(HttpStatus.UNAUTHORIZED)
-        }
-        val token = authorizationHeader.substring(7)
-
-        // 2. 서비스 호출 및 정보 추출
-        val userInfo = jwtTokenProvider.getClaims(token)
-        val res = TokenUserResponse(userInfo);
+    fun getMyInfo(@RequestHeader("Authorization") authorizationHeader: String): ResponseEntity<BasicRes<TokenUserResponse>> {
+        val res = jwtTokenProvider.getTokenUserResponse(authorizationHeader);
 
         // 3. 유효성 검사 및 응답
-        return ResponseEntity.ok(res)
+        return ResponseEntity.ok(BasicRes(true, res))
     }
 
-    @PostMapping
+    @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED) // HTTP 201 응답 코드 설정
-    fun createUser(@RequestBody request: UserCreateRequest): Map<String, String> {
+    fun createUser(@RequestBody request: UserCreateRequest): BasicRes<String> {
         val jwtToken = userService.createUser(request)
         // 응답으로 생성된 ID를 반환
-        return mapOf("token" to jwtToken)
+        return BasicRes(true, jwtToken)
+    }
+
+    @PostMapping("/login")
+    fun loginUser(@RequestBody request: LoginRequest): BasicRes<String?> {
+        val jwtToken = userService.validateUser(request)
+
+        return if(jwtToken != null)
+            BasicRes(result=true, data=jwtToken)
+        else
+            BasicRes(result=false, data=null)
     }
 }

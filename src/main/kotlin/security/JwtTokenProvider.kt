@@ -1,16 +1,20 @@
 package com.overtheinfinite.security
 
 import com.overtheinfinite.user.domain.User
+import com.overtheinfinite.user.dto.TokenUserResponse
 import io.jsonwebtoken.*
 import io.jsonwebtoken.io.Decoders
 import io.jsonwebtoken.security.Keys
 import org.springframework.beans.factory.annotation.Value
+import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Component
 import java.security.SecureRandom
 import java.security.SignatureException
 import java.util.*
 import javax.crypto.SecretKey
 import javax.crypto.spec.SecretKeySpec
+import javax.naming.AuthenticationException
 
 @Component
 class JwtTokenProvider(
@@ -66,6 +70,18 @@ class JwtTokenProvider(
             .signWith(key)
 
             .compact() // 토큰 문자열 생성
+    }
+
+    fun getTokenUserResponse(authorizationHeader: String): TokenUserResponse {
+        if (!authorizationHeader.startsWith("Bearer ")) {
+            throw AuthenticationException()
+        }
+
+        val token = authorizationHeader.substring(7)
+
+        // 2. 서비스 호출 및 정보 추출
+        val userInfo = getClaims(token)
+        return TokenUserResponse(userInfo);
     }
 
     /**

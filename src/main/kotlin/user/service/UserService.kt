@@ -19,34 +19,6 @@ class UserService(
     private val customPasswordEncoder: CustomPasswordEncoder,
     private val userRepository: UserRepository,
 ) {
-    fun processUserRequest(authHeader: String): String {
-        // 1. "Bearer " 접두사 제거
-        if (!authHeader.startsWith("Bearer ")) {
-            throw IllegalArgumentException("Authorization header must start with Bearer")
-        }
-        val token = authHeader.substring(7)
-
-        try {
-            // 2. 토큰 검증 및 클레임 추출
-            val claims = jwtTokenProvider.getClaims(token)
-
-            // 3. 추출된 정보 사용
-            val userId = claims.subject.toLong()
-            val role = claims["role"] as String
-
-            println("Authenticated User ID: $userId, Role: $role")
-
-            // 4. DB에서 실제 유저 정보 조회 등의 로직 수행...
-            // userRepository.findById(userId)
-
-            return "Request processed successfully for user $userId"
-
-        } catch (e: JwtException) {
-            // 토큰 유효성 검증 실패 (서명 오류, 만료 등)
-            println("JWT Validation Failed: ${e.message}")
-            throw IllegalAccessException("Invalid or expired token.")
-        }
-    }
 
     // 임시로 성공 메시지를 반환합니다. 실제로는 Repository를 호출해야 합니다.
     fun createUser(request: UserCreateRequest): String {
