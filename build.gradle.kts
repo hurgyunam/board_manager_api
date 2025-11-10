@@ -30,12 +30,21 @@ dependencies {
 
     runtimeOnly("org.mariadb.jdbc:mariadb-java-client")
 
+    // JJWT Core
+    implementation("io.jsonwebtoken:jjwt-api:0.12.3")
+    // JJWT Implementation (runtime 시 필요)
+    runtimeOnly("io.jsonwebtoken:jjwt-impl:0.12.3")
+    // JJWT Jackson Serializer (JSON 처리)
+    runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.12.3")
+
     // Spring Boot 3.x (Jakarta) 환경을 유지하며, 버전을 5.0.0보다 높은 버전으로 올립니다.
     val querydslVersion = "5.6.1" // 혹은 현재 시점의 최신 안정 버전
 // ✅ 수정된 설정: 그룹 ID를 io.github.openfeign.querydsl로 변경
     kapt("io.github.openfeign.querydsl:querydsl-apt:$querydslVersion:jakarta")
     implementation("io.github.openfeign.querydsl:querydsl-jpa:$querydslVersion:jakarta")
 
+    implementation("org.springframework.security:spring-security-core")
+    implementation("org.springframework.security:spring-security-crypto")
     // 🔗 JPA Annotation Processor (kapt를 통해 처리)
     // Java/Kotlin 엔티티를 인식하는 데 필요합니다.
     kapt("jakarta.persistence:jakarta.persistence-api")
