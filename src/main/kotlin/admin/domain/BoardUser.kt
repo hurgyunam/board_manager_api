@@ -1,6 +1,6 @@
-package com.overtheinfinite.board.domain
+package com.overtheinfinite.admin.domain
 
-import com.overtheinfinite.user.domain.RoleType
+import com.overtheinfinite.board.domain.Board
 import com.overtheinfinite.user.domain.User
 import jakarta.persistence.*
 

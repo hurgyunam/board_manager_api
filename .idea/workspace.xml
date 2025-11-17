@@ -4,28 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e054a0a-d591-4ba6-b609-21e476edce2c" name="Changes" comment="일반 유저 회원가입 추가">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/board/controller/PostController.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/board/domain/Board.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/board/domain/BoardRole.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/board/domain/BoardUser.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/board/domain/Post.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/board/domain/PostComment.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/board/dto/AddPostRequest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/board/dto/DeletePostRequest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/board/dto/PostResponse.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/board/dto/SearchPostRequest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/board/dto/UpdatePostRequest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/board/repository/BoardRepository.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/board/repository/PostRepository.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/board/repository/PostRepositoryCustom.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/board/repository/PostRepositoryImpl.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/board/service/PostService.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/common/BasicRes.kt" afterDir="false" />
+    <list default="true" id="3e054a0a-d591-4ba6-b609-21e476edce2c" name="Changes" comment="POST 관련 API">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/admin/controller/BoardController.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/board/dto/AddPostCommentRequest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/board/dto/GetPostCommentRequest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/board/dto/PostCommentResponse.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/board/repository/PostCommentRepository.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/security/JwtTokenProvider.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/security/JwtTokenProvider.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/user/controller/UserController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/user/controller/UserController.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/user/service/UserService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/user/service/UserService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/board/controller/PostController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/board/controller/PostController.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/board/domain/BoardRole.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/admin/domain/BoardRole.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/board/domain/BoardUser.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/admin/domain/BoardUser.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/board/domain/PostComment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/board/domain/PostComment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/board/repository/BoardRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/admin/repository/BoardRepository.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/board/service/PostService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/board/service/PostService.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,10 +64,10 @@
       <list>
         <option value="Enum" />
         <option value="Kotlin Enum" />
-        <option value="Kotlin Class" />
+        <option value="Kotlin Interface" />
         <option value="Class" />
         <option value="Kotlin Data Class" />
-        <option value="Kotlin Interface" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -103,6 +94,12 @@
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="admin.repository" />
+      <recent name="admin.domain" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="ApplicationKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.overtheinfinite.ApplicationKt" />
@@ -150,7 +147,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762747756443</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="POST 관련 API">
+      <option name="closed" value="true" />
+      <created>1762778469612</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1762778469612</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -168,6 +173,7 @@
     <MESSAGE value="Spring Boot로 리뉴얼" />
     <MESSAGE value="QueryDSL 추가" />
     <MESSAGE value="일반 유저 회원가입 추가" />
-    <option name="LAST_COMMIT_MESSAGE" value="일반 유저 회원가입 추가" />
+    <MESSAGE value="POST 관련 API" />
+    <option name="LAST_COMMIT_MESSAGE" value="POST 관련 API" />
   </component>
 </project>

@@ -21,7 +21,7 @@ data class PostComment(
 
     @ManyToOne(fetch = FetchType.LAZY) // User 엔티티와의 다대일(N:1) 관계
     @JoinColumn(name = "postCommentId")      // 외래 키 컬럼 이름 지정
-    val parentCommentId: PostComment?,
+    val parentComment: PostComment?,
 
     @ManyToOne(fetch = FetchType.LAZY) // User 엔티티와의 다대일(N:1) 관계
     @JoinColumn(name = "writerId")      // 외래 키 컬럼 이름 지정

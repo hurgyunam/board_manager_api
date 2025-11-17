@@ -1,17 +1,18 @@
 package com.overtheinfinite.board.service
 
 import com.overtheinfinite.board.domain.Post
+import com.overtheinfinite.board.domain.PostComment
 import com.overtheinfinite.board.dto.*
-import com.overtheinfinite.board.repository.BoardRepository
+import com.overtheinfinite.admin.repository.BoardRepository
+import com.overtheinfinite.board.repository.PostCommentRepository
 import com.overtheinfinite.board.repository.PostRepository
 import com.overtheinfinite.board.repository.PostRepositoryCustom
 import com.overtheinfinite.user.domain.RoleType
 import com.overtheinfinite.user.repository.UserRepository
 import org.springframework.data.domain.Page
+import org.springframework.data.domain.PageRequest
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
-import java.time.LocalDateTime
-import java.util.*
 import kotlin.NoSuchElementException
 
 @Service
@@ -20,6 +21,7 @@ class PostService(
     private val userRepository: UserRepository,
     private val postRepository: PostRepository,
     private val postRepositoryCustom: PostRepositoryCustom,
+    private val postCommentRepository: PostCommentRepository,
 ) {
 
     fun getPost(postId: Long): PostResponse {
@@ -100,5 +102,41 @@ class PostService(
         } else {
             return false
         }
+    }
+
+    fun getPostComments(getPostCommentRequest: GetPostCommentRequest): Page<PostCommentResponse> {
+        val comments = postCommentRepository.findByPostId(getPostCommentRequest.postId
+            , PageRequest.of(getPostCommentRequest.pageNo
+            , getPostCommentRequest.pageSize))
+
+        return comments.map { PostCommentResponse(it) }
+    }
+
+    @Transactional
+    fun addPostComment(addPostCommentRequest: AddPostCommentRequest, userId: Long): PostCommentResponse {
+        val user = userRepository.findById(userId).orElseThrow() {
+            NoSuchElementException("User not found with ID: $userId")
+        }
+
+        val post = postRepository.findById(addPostCommentRequest.postId).orElseThrow() {
+            NoSuchElementException("Post not found with ID: ${addPostCommentRequest.postId}")
+        }
+
+        var postComment: PostComment? = null
+
+        if(addPostCommentRequest.parentCommentId != null) {
+            postComment = postCommentRepository.findById(addPostCommentRequest.parentCommentId).orElseThrow() {
+                NoSuchElementException("PostComment not found with ID: ${addPostCommentRequest.parentCommentId}")
+            }
+        }
+
+        val newPostComment = postCommentRepository.save(PostComment(
+            comment = addPostCommentRequest.comment,
+            post = post,
+            parentComment =  postComment,
+            writer = user,
+        ))
+
+        return PostCommentResponse(newPostComment)
     }
 }

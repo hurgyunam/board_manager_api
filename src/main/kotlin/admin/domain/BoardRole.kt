@@ -1,4 +1,4 @@
-package com.overtheinfinite.board.domain
+package com.overtheinfinite.admin.domain
 
 enum class BoardRole {
     MANAGER,
