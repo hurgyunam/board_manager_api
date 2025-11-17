@@ -37,6 +37,8 @@ dependencies {
     // JJWT Jackson Serializer (JSON 처리)
     runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.12.3")
 
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+
     // Spring Boot 3.x (Jakarta) 환경을 유지하며, 버전을 5.0.0보다 높은 버전으로 올립니다.
     val querydslVersion = "5.6.1" // 혹은 현재 시점의 최신 안정 버전
 // ✅ 수정된 설정: 그룹 ID를 io.github.openfeign.querydsl로 변경

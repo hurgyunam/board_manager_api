@@ -3,11 +3,11 @@ package com.overtheinfinite.user.domain
 import jakarta.persistence.*
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.LastModifiedDate
+import org.springframework.data.jpa.domain.support.AuditingEntityListener
 import java.time.LocalDateTime
 import java.util.*
 
-// ✨ @Entity 어노테이션이 필수입니다.
-
+@EntityListeners(AuditingEntityListener::class)
 @Entity
 data class User(
     // ✨ @Id 어노테이션과 기본 키 설정이 필요합니다.

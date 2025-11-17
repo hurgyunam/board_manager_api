@@ -40,7 +40,7 @@ class JwtTokenProvider(
     }
 
     // 💡 Base64 디코딩된 비밀 키
-    private val key: SecretKey = Keys.hmacShaKeyFor(Decoders.BASE64.decode(generateNewSecretKey()))
+    private val key: SecretKey = Keys.hmacShaKeyFor(Decoders.BASE64.decode(secretKeyString))
 
     /**
      * 유저 정보(예: ID, 역할)를 클레임으로 포함하는 JWT 토큰을 생성합니다.
@@ -72,15 +72,9 @@ class JwtTokenProvider(
             .compact() // 토큰 문자열 생성
     }
 
-    fun getTokenUserResponse(authorizationHeader: String): TokenUserResponse {
-        if (!authorizationHeader.startsWith("Bearer ")) {
-            throw AuthenticationException()
-        }
-
-        val token = authorizationHeader.substring(7)
-
+    fun getTokenUserResponse(accessToken: String): TokenUserResponse {
         // 2. 서비스 호출 및 정보 추출
-        val userInfo = getClaims(token)
+        val userInfo = getClaims(accessToken)
         return TokenUserResponse(userInfo);
     }
 

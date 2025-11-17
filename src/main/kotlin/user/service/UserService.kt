@@ -8,7 +8,6 @@ import com.overtheinfinite.user.domain.User
 import com.overtheinfinite.user.dto.LoginRequest
 import com.overtheinfinite.user.dto.UserCreateRequest
 import com.overtheinfinite.user.repository.UserRepository
-import io.jsonwebtoken.JwtException
 import org.springframework.transaction.annotation.Transactional // ⬅️ Correct Import!
 import org.springframework.stereotype.Service
 
@@ -22,14 +21,14 @@ class UserService(
 
     // 임시로 성공 메시지를 반환합니다. 실제로는 Repository를 호출해야 합니다.
     fun createUser(request: UserCreateRequest): String {
-        val encryptedName = nameEncryptor.encrypt(request.name)
+        val encryptedName = nameEncryptor.encrypt(request.email)
 
         val hashedPassword = customPasswordEncoder.encode(request.password);
 
         val result = userRepository.save(
             User(
                 name=encryptedName,
-                loginId=request.loginId,
+                loginId=request.username,
                 hashedPassword=hashedPassword,
                 role= RoleType.USER,
             )
@@ -40,7 +39,7 @@ class UserService(
 
     @Transactional(readOnly = true)
     fun validateUser(request: LoginRequest): String? {
-        val user = userRepository.findByLoginId(request.loginId) ?: return null;
+        val user = userRepository.findByLoginId(request.username) ?: return null;
 
         val passwordMatches = customPasswordEncoder.matches(
             request.password, // 💡 사용자가 입력한 평문 비밀번호
