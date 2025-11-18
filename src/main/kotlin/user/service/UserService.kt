@@ -27,20 +27,21 @@ class UserService(
 
         val result = userRepository.save(
             User(
-                name=encryptedName,
-                loginId=request.username,
+                email=encryptedName,
+                username=request.username,
                 hashedPassword=hashedPassword,
                 role= RoleType.USER,
             )
         )
         // JWT 토큰으로 export 할때 비밀번호가 알아서 빠짐
-        return jwtTokenProvider.createToken(result)
+        return jwtTokenProvider.createToken(result.id.toString(), request.username, request.email, result.role)
     }
 
     @Transactional(readOnly = true)
     fun validateUser(request: LoginRequest): String? {
-        val user = userRepository.findByLoginId(request.username) ?: return null;
+        val user: User = userRepository.findByUsername(request.username) ?: return null;
 
+        val decryptedEmail = nameEncryptor.decrypt(user.email)
         val passwordMatches = customPasswordEncoder.matches(
             request.password, // 💡 사용자가 입력한 평문 비밀번호
             user.hashedPassword // 💡 DB에 저장된 기존 해시값
@@ -50,7 +51,7 @@ class UserService(
             // 3. 토큰 생성 및 반환
             // createToken(userId: Long, role: String) 시그니처를 따른다고 가정합니다.
 
-            jwtTokenProvider.createToken(user)
+            jwtTokenProvider.createToken(user.id.toString(), user.username, decryptedEmail, user.role)
         } else {
             null;
         }

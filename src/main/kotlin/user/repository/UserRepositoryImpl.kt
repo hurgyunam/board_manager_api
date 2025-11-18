@@ -19,19 +19,19 @@ class UserRepositoryImpl(
     // Q-Class 인스턴스를 사용합니다.
     private val user: QUser = QUser.user
 
-    override fun findUsersByNameContains(namePattern: String): List<User> {
+    override fun findUsersByEmailContains(namePattern: String): List<User> {
         return queryFactory
             .selectFrom(user)
-            .where(user.name.contains(namePattern))
+            .where(user.email.contains(namePattern))
             .fetch() // 결과 리스트를 반환
     }
 
-    override fun updateHashedPasswordByLoginId(loginId: String, newHashedPassword: String): Long {
+    override fun updateHashedPasswordByUserName(username: String, newHashedPassword: String): Long {
         // executeUpdate()를 통해 벌크 업데이트 실행
         return queryFactory
             .update(user)
             .set(user.hashedPassword, newHashedPassword)
-            .where(user.loginId.eq(loginId))
+            .where(user.username.eq(username))
             .execute()
     }
 }

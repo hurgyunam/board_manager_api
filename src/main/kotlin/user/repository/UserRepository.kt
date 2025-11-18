@@ -8,5 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository
 interface UserRepository : JpaRepository<User, Long> {
 
     // Spring Data JPA의 쿼리 메서드 기능을 사용하여 loginId로 User를 찾는 메서드를 추가할 수 있습니다.
-    fun findByLoginId(loginId: String): User?
+    fun findByUsername(username: String): User?
 }

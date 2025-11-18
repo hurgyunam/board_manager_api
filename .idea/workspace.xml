@@ -4,16 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e054a0a-d591-4ba6-b609-21e476edce2c" name="Changes" comment="POST 관련 API - 게시글 밴, 댓글 기능">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/config/WebConfig.kt" afterDir="false" />
+    <list default="true" id="3e054a0a-d591-4ba6-b609-21e476edce2c" name="Changes" comment="JWT 로그인 기능">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/common/BasicRes.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/common/BasicRes.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/board/dto/PostCommentResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/board/dto/PostCommentResponse.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/board/dto/PostResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/board/dto/PostResponse.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/security/JwtTokenProvider.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/security/JwtTokenProvider.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/user/controller/UserController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/user/controller/UserController.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/user/domain/User.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/user/domain/User.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/user/dto/LoginRequest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/user/dto/LoginRequest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/user/dto/UserCreateRequest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/user/dto/UserCreateRequest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/user/dto/TokenUserResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/user/dto/TokenUserResponse.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/user/repository/UserRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/user/repository/UserRepository.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/user/repository/UserRepositoryCustom.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/user/repository/UserRepositoryCustom.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/user/repository/UserRepositoryImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/user/repository/UserRepositoryImpl.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/user/service/UserService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/user/service/UserService.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -161,7 +161,15 @@
       <option name="project" value="LOCAL" />
       <updated>1763373108385</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="JWT 로그인 기능">
+      <option name="closed" value="true" />
+      <created>1763381365201</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1763381365201</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -181,17 +189,7 @@
     <MESSAGE value="일반 유저 회원가입 추가" />
     <MESSAGE value="POST 관련 API" />
     <MESSAGE value="POST 관련 API - 게시글 밴, 댓글 기능" />
-    <option name="LAST_COMMIT_MESSAGE" value="POST 관련 API - 게시글 밴, 댓글 기능" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/src/main/kotlin/security/JwtTokenProvider.kt</url>
-          <line>88</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="JWT 로그인 기능" />
+    <option name="LAST_COMMIT_MESSAGE" value="JWT 로그인 기능" />
   </component>
 </project>

@@ -14,7 +14,7 @@ data class PostCommentResponse(
         id=postComment.id ?: throw IllegalArgumentException("ID는 필수 값입니다."),
         comment=postComment.comment,
         parentCommentId=postComment.parentComment?.id,
-        writerName=postComment.writer.name,
+        writerName=postComment.writer.email,
         createdDate=postComment.createdDate
     )
 }

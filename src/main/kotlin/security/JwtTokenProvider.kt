@@ -1,5 +1,6 @@
 package com.overtheinfinite.security
 
+import com.overtheinfinite.user.domain.RoleType
 import com.overtheinfinite.user.domain.User
 import com.overtheinfinite.user.dto.TokenUserResponse
 import io.jsonwebtoken.*
@@ -48,7 +49,7 @@ class JwtTokenProvider(
      * @param role 토큰에 포함할 사용자 역할 또는 권한
      * @return 생성된 JWT 문자열
      */
-    fun createToken(user: User): String {
+    fun createToken(id: String, username: String, email: String, role: RoleType): String {
         // 1. 토큰 만료 시간 설정
         val now = Date()
         val expirationDate = Date(now.time + expirationMs)
@@ -56,11 +57,11 @@ class JwtTokenProvider(
         // 2. JWT 생성
         return Jwts.builder()
             // 💡 클레임 설정 (토큰에 담을 유저 정보)
-            .subject(user.id.toString()) // 토큰의 주제 (보통 유저 ID)
+            .subject(id) // 토큰의 주제 (보통 유저 ID)
 //            .claim("role", role)        // 추가적인 사용자 역할 클레임
-            .claim("loginId", user.loginId) // 예시: 다른 유저 정보 클레임
-            .claim("name", user.name)
-            .claim("role", user.role)
+            .claim("username", username) // 예시: 다른 유저 정보 클레임
+            .claim("email", email)
+            .claim("role", role)
 
             // 💡 발행 시간 및 만료 시간 설정
             .issuedAt(now)

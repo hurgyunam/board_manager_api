@@ -16,7 +16,7 @@ data class PostResponse(
     constructor(post: Post) : this(
         id = post.id ?: throw IllegalArgumentException("ID는 필수 값입니다."),
         title = post.title,
-        writerName = post.writer.name, // Post Entity 내부의 author.name을 사용
+        writerName = post.writer.email, // Post Entity 내부의 author.name을 사용
         createdDate = post.createdDate ?: throw IllegalArgumentException("생성일자는 필수 값입니다."),
     )
 }

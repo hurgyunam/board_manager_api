@@ -5,7 +5,6 @@ import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.LastModifiedDate
 import org.springframework.data.jpa.domain.support.AuditingEntityListener
 import java.time.LocalDateTime
-import java.util.*
 
 @EntityListeners(AuditingEntityListener::class)
 @Entity
@@ -15,10 +14,10 @@ data class User(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
 
-    val name: String,
+    val email: String,
 
     @Column(unique = true, nullable = false) // 로그인 ID는 고유하고 필수
-    val loginId: String,
+    val username: String,
 
     val hashedPassword: String,
 
