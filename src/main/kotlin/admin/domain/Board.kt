@@ -1,4 +1,4 @@
-package com.overtheinfinite.board.domain
+package com.overtheinfinite.admin.domain
 
 import jakarta.persistence.*
 import org.springframework.data.annotation.CreatedDate

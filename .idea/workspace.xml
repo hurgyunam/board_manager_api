@@ -4,17 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e054a0a-d591-4ba6-b609-21e476edce2c" name="Changes" comment="JWT 로그인 기능">
+    <list default="true" id="3e054a0a-d591-4ba6-b609-21e476edce2c" name="Changes" comment="DB 컬럼 변경: USER 테이블 username, email">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/admin/service/BoardService.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/board/dto/PostCommentResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/board/dto/PostCommentResponse.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/board/dto/PostResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/board/dto/PostResponse.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/security/JwtTokenProvider.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/security/JwtTokenProvider.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/user/domain/User.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/user/domain/User.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/user/dto/TokenUserResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/user/dto/TokenUserResponse.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/user/repository/UserRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/user/repository/UserRepository.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/user/repository/UserRepositoryCustom.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/user/repository/UserRepositoryCustom.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/user/repository/UserRepositoryImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/user/repository/UserRepositoryImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/user/service/UserService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/user/service/UserService.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,9 +54,9 @@
       <list>
         <option value="Enum" />
         <option value="Kotlin Enum" />
-        <option value="Kotlin Interface" />
         <option value="Class" />
         <option value="Kotlin Data Class" />
+        <option value="Kotlin Interface" />
         <option value="Kotlin Class" />
       </list>
     </option>
@@ -169,7 +161,15 @@
       <option name="project" value="LOCAL" />
       <updated>1763381365201</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="DB 컬럼 변경: USER 테이블 username, email">
+      <option name="closed" value="true" />
+      <created>1763467711400</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1763467711400</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -190,6 +190,7 @@
     <MESSAGE value="POST 관련 API" />
     <MESSAGE value="POST 관련 API - 게시글 밴, 댓글 기능" />
     <MESSAGE value="JWT 로그인 기능" />
-    <option name="LAST_COMMIT_MESSAGE" value="JWT 로그인 기능" />
+    <MESSAGE value="DB 컬럼 변경: USER 테이블 username, email" />
+    <option name="LAST_COMMIT_MESSAGE" value="DB 컬럼 변경: USER 테이블 username, email" />
   </component>
 </project>
