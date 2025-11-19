@@ -20,7 +20,7 @@ class UserController(
 ) {
     @GetMapping("/me")
     fun getMyInfo(@CookieValue("accessToken") accessToken: String): ResponseEntity<BasicRes<TokenUserResponse>> {
-        val res = jwtTokenProvider.getTokenUserResponse(accessToken);
+        val res = jwtTokenProvider.getTokenUserResponse(accessToken)
 
         // 3. 유효성 검사 및 응답
         return ResponseEntity.ok(BasicRes(true, res))
