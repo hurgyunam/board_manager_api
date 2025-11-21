@@ -5,14 +5,19 @@ import com.overtheinfinite.user.domain.User
 import jakarta.persistence.*
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.LastModifiedDate
+import org.springframework.data.jpa.domain.support.AuditingEntityListener
 import java.time.LocalDateTime
 
+
+@EntityListeners(AuditingEntityListener::class)
 @Entity
 data class Post(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
     var title: String,
+
+    @Column(columnDefinition = "TEXT") // ✨ DB 타입 강제
     var content: String,
 
     @ManyToOne(fetch = FetchType.LAZY) // User 엔티티와의 다대일(N:1) 관계

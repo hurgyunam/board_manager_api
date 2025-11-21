@@ -52,4 +52,18 @@ class UserController(
         else
             BasicRes(result=false, data=null)
     }
+
+    @PostMapping("/logout")
+    fun logout(response: HttpServletResponse) {
+        val cookie = Cookie("accessToken", null).apply {
+            isHttpOnly = true
+            secure = true
+            maxAge = 0
+            path = "/"
+        }
+
+        response.addCookie(cookie)
+
+        BasicRes(result=true, data=null)
+    }
 }
